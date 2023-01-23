@@ -20,7 +20,6 @@ async def on_ready():
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")   
             
-
 @commands.command()
 @commands.dm_only()
 @commands.is_owner()
@@ -36,18 +35,10 @@ async def sync(ctx):
             if filename.endswith(".py"):
                 count = +1
 
-       # ListofCogs = bot.cogs
-
-       # for NameofCog, TheClassofCog in ListofCogs.items():
-           # cog = NameofCog
-
         emb = discord.Embed(title="Success!", color= discord.Color.green())
         emb.add_field(name = f"Cogs loaded: {count}", value = title[5:], inline = False)
-        emb.add_field(name = f"Commands: {len(list(synced))}", value = f"{names}")
+        emb.add_field(name = f"Commands: {len(list(synced))}", value = f"{names}" + "\n")
         await ctx.send(embed = emb)
-    
-        # await ctx.send(f'``{names}`` synced successfully')
-        # print(f'Synced {len(synced)} command(s)')
     except Exception as e: 
         await ctx.send("Error!")
         print(e)
